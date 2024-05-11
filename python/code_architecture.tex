@@ -1,0 +1,30 @@
+\section{Arquitectura del codi}
+El codi a Python ha estat fet amb l'objectiu de ser f\`acil de llegir,
+separat en diversos arxius i utilitzant noms significatius.
+Les l\'inies de codi individuals no haurien de
+donar cap problema al intentar entendre-les.
+
+
+\subsection*{Estructura d'un programa de pyxel}
+La llibreria Pyxel fa molt d'\'us d'estructures de classes.
+Aquestes se separen en tres funcions, per convenci\'o
+(i, en el cas de la classe principal, perque la llibreria ho requereix):
+
+\begin{itemize}
+\item{\_\_init\_\_:
+	S'executa al instanciar la classe, es pot tornar a executar manualment.
+	En aquesta funci\'o s'inicialitzen totes les variables inicials amb el seu valor corresponent
+	(en el cas de la classe principal, tamb\'e s'inicia pyxel).
+	}
+\item{update:
+	S'executa cada torn. 
+	Per convenci\'o, aqu\'i s'executa tot el que t\'e a veure amb
+	el funcionament intern del programa i acualitzar les variables.
+	}
+\item{draw:
+	S'executa cada torn.
+	Per convenci\'o, aqu\'i s'executa tot el que t\'e a veure amb
+	gr\'afics de Pyxel.
+}
+\end{itemize}
+
