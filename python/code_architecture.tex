@@ -1,11 +1,6 @@
 \section{Arquitectura del codi}
-El codi a Python ha estat fet amb l'objectiu de ser f\`acil de llegir,
-separat en diversos arxius i utilitzant noms significatius.
-Les l\'inies de codi individuals no haurien de
-donar cap problema al intentar entendre-les.
 
-
-\subsection*{Estructura d'un programa de pyxel}
+\subsection{Estructura principal}
 La llibreria Pyxel fa molt d'\'us d'estructures de classes.
 Aquestes se separen en tres funcions, per convenci\'o
 (i, en el cas de la classe principal, perque la llibreria ho requereix):
@@ -13,8 +8,8 @@ Aquestes se separen en tres funcions, per convenci\'o
 \begin{itemize}
 \item{\_\_init\_\_:
 	S'executa al instanciar la classe, es pot tornar a executar manualment.
-	En aquesta funci\'o s'inicialitzen totes les variables inicials amb el seu valor corresponent
-	(en el cas de la classe principal, tamb\'e s'inicia pyxel).
+	En aquesta funci\'o s'inicialitzen totes les variables inicials amb el seu valor
+	corresponent (en el cas de la classe principal, tamb\'e s'inicia pyxel).
 	}
 \item{update:
 	S'executa cada torn. 
@@ -28,3 +23,43 @@ Aquestes se separen en tres funcions, per convenci\'o
 }
 \end{itemize}
 
+En el cas del nostre joc,
+utilitzem una classe inicial que s'encarrega d'executar
+les funcions update() i draw() de la classe de
+l'entorn que volem executar en cada cas (section).
+
+Els entorns s'encarreguen tamb\'e d'executar les funcions update() i draw()
+de cada classe interna que ho necessiti.
+Aquests estan separats perque fan funcions completament diferents,
+ja que, per exemple, el men\'u \'es completament independent de la secci\'o del joc.
+
+La majoria d'entorns t\'enen un funcionament simple i intuitiu,
+a excepci\'o de l'entorn del joc.
+
+
+\subsection{Entorn: game.py}
+
+Aquest \'es l'entorn principal del joc.
+S'encarrega d'actualitzar els events, gr\'afics i les entitats del joc.
+
+
+\subsubsection{Llistes d'entitats}
+Les entitats del jugador es guarden com a variable individual,
+ja que nom\'es t\'enen una inst\`ancia.
+Les entitats que t\'enen m\'es inst\`ancies s'emmagatzemen en llistes,
+les quals s\'on iterades posteriorment per
+actualitzar cada una de les entitats guardades.
+
+Hi ha dues llistes d'entitats:
+la d'enemics actius i la d'enemics inactius (morts).
+Quan un enemic mor, aquest es mou a la llista d'enemics morts
+fins que arribi el seu moment de reapar\`eixer.
+
+\subsubsection{Co\lgem isions}
+
+\subsubsection{Sistema d'events}
+
+
+
+
+\subsection{Entitats}
