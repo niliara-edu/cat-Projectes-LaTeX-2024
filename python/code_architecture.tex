@@ -40,7 +40,7 @@ a excepci\'o de l'entorn del joc.
 \subsection{Entorn: game.py}
 
 Aquest \'es l'entorn principal del joc.
-S'encarrega d'actualitzar els events, gr\'afics i les entitats del joc.
+S'encarrega d'actualitzar events, gr\'afics i entitats del joc.
 
 
 \subsubsection{Llistes d'entitats}
@@ -54,12 +54,33 @@ Hi ha dues llistes d'entitats:
 la d'enemics actius i la d'enemics inactius (morts).
 Quan un enemic mor, aquest es mou a la llista d'enemics morts
 fins que arribi el seu moment de reapar\`eixer.
+Cada llista executa funcions diferents de les entitats que cont\'e.
 
 \subsubsection{Co\lgem isions}
+Per co\lgem isionar les entitats enemigues amb la classe del jugador o l'espasa,
+s'itera cada enemic actiu i es comprova la dist\`ancia entre aquests.
+En cas de co\lgem isi\'o amb la classe espasa,
+l'entitat enemiga va a la llista d'enemics morts,
+per\`o no sense abans haver comprobat la co\lgem isi\'o amb el jugador,
+que treuria vida.
 
 \subsubsection{Sistema d'events}
-
+Per administrar variables relacionades amb temps i contadors,
+s'utilitzen les classes rellotge
+(per calcular temps i events d'aparicions)
+i contador
+(per calcular la quantitat d'enemics actius, restants, i variables de la ronda).
 
 
 
 \subsection{Entitats}
+Les entitats son classes amb variables i funcions.
+Segueixen la convenci\'o de pyxel en el funcionament de les funcions principals,
+pel que consisteixen en tres funcions principals:
+\_\_init\_\_, update i draw.
+
+Les seves variables m\'es importants s\'on els vectors de posici\'o,
+ja que s\'on necessaris per saber a on imprimir la entitat
+i comprovar co\lgem isions.
+La majoria de la resta del funcionament \'es ll\'ogic i dep\`en \'unicament
+de la classe en si.
