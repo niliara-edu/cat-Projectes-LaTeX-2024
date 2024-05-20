@@ -2,14 +2,13 @@
 
 \subsection{Estructura principal}
 La llibreria Pyxel fa molt d'\'us d'estructures de classes.
-Aquestes se separen en tres funcions, per convenci\'o
-(i, en el cas de la classe principal, perque la llibreria ho requereix):
+Aquestes se separen en tres funcions:
 
 \begin{itemize}
-\item{\_\_init\_\_:
+\item{ready:
 	S'executa al instanciar la classe, es pot tornar a executar manualment.
 	En aquesta funci\'o s'inicialitzen totes les variables inicials amb el seu valor
-	corresponent (en el cas de la classe principal, tamb\'e s'inicia pyxel).
+	corresponent, s'inicien classes, etc.
 	}
 \item{update:
 	S'executa cada torn. 
@@ -23,28 +22,27 @@ Aquestes se separen en tres funcions, per convenci\'o
 }
 \end{itemize}
 
+Per convenci\'o, hauria de ser \_\_init\_\_ en comptes de ready,
+per\`o ho hem substituit per ready per
+tenir m\'es control de quan s'executa i per
+utilitzar el mateix format que la majoria de game engines
+(com Pico-8, la consola de la qual Pyxel s'ha copiat).
+
 En el cas del nostre joc,
-utilitzem una classe inicial que s'encarrega d'executar
-les funcions update() i draw() de la classe de
-l'entorn que volem executar en cada cas (section).
-
-Els entorns s'encarreguen tamb\'e d'executar les funcions update() i draw()
-de cada classe interna que ho necessiti.
-Aquests estan separats perque fan funcions completament diferents,
-ja que, per exemple, el men\'u \'es completament independent de la secci\'o del joc.
-
-La majoria d'entorns t\'enen un funcionament simple i intuitiu,
-a excepci\'o de l'entorn del joc.
+utilitzem una classe principal, les quals funcions s'executen per la llibreria Pyxel,
+que s'encarrega d'executar les funcions dels nodes fills (escenaris),
+els quals s'encarreguen d'executar les funcions dels seus nodes fills.
 
 
-\subsection{Entorn: game.py}
+\subsection{Escenaris}
 
-Aquest \'es l'entorn principal del joc.
-S'encarrega d'actualitzar events, gr\'afics i entitats del joc.
+Els escenaris serveixen per separar apartats del joc
+ja que, per exemple, el men\'u no t\'e gaireb\'e res a veure amb el joc.
+Com que t\'enen comportaments tan diferents, s'han separat en escenaris.
 
 
 \subsubsection{Llistes d'entitats}
-Les entitats del jugador es guarden com a variable individual,
+En l'escenari del joc, les entitats del jugador es guarden com a variable individual,
 ja que nom\'es t\'enen una inst\`ancia.
 Les entitats que t\'enen m\'es inst\`ancies s'emmagatzemen en llistes,
 les quals s\'on iterades posteriorment per
@@ -72,15 +70,11 @@ i contador
 (per calcular la quantitat d'enemics actius, restants, i variables de la ronda).
 
 
-
 \subsection{Entitats}
 Les entitats son classes amb variables i funcions.
 Segueixen la convenci\'o de pyxel en el funcionament de les funcions principals,
 pel que consisteixen en tres funcions principals:
-\_\_init\_\_, update i draw.
+ready, update i draw.
 
-Les seves variables m\'es importants s\'on els vectors de posici\'o,
-ja que s\'on necessaris per saber a on imprimir la entitat
-i comprovar co\lgem isions.
-La majoria de la resta del funcionament \'es ll\'ogic i dep\`en \'unicament
-de la classe en si.
+Les entitats consisteixen b\`asicament en actualitzen la seva posici\'o a update
+i printen el seu sprite a l'escenari amb draw.
