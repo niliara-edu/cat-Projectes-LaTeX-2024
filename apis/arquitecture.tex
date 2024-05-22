@@ -1,9 +1,20 @@
 \section{Arquitectura del programa}
 
-\begin{itemize}
-\item{Templates era per fer el html sol, no fa res}
-\item{Models: Classes per guardar atributs de les apis}
-\item{Controladors: Programa que manega la web}
-\item{wwwroot: on es guarda el css/font/imatges (assets de la web)}
-\item{Views: home: pagines, shared layout: per a totes les pagines}
-\end{itemize}
+\subsubsection{Models}
+A la carpeta Models es guarden les classes amb els atributs que es reben de l'api.
+
+\subsubsection{Controllers}
+\'Es on es guarda l'arxiu cs que manega les trucades a la web i fa les trucades a la api.
+Per fer una trucada a l'api,
+guarda l'informaci\'o rebuda a una classe (definida a Models)
+i a continuaci\'o obre la vista corresponent (definida a Views).
+
+\subsubsection{Views}
+\'Es la carpeta a on es guarden les p\`agines en format cshtml.
+Es divideix en dues subcarpetes: home, a on es guarden les p\`agines,
+i shared, a on es guarda el layout compartit (que es repeteix a totes les p\`agines).
+
+\subsubsection{wwwroot}
+\'Es a on es guarden els assets de la web,
+incluint el css, la font i la imatge del fons.
+

@@ -1,6 +1,49 @@
 \section{Explicaci\'o del codi}
-El fitxer que controla el funcionament de la p\`agina \'es HomeController.cs. 
-En la majoria de p\`agines es demana un argument amb el qual es buscar\`a
-la beguda objectiu.
 
-El shared layout cont\'e el t\'itol, una barra de busca i un navbar.
+\subsection{HomeController}
+El fitxer HomeController.cs \'es l'encarregat de manegar la p\`agina.
+Dep\`en de la funci\'o executada, carrega una vista o una altra.
+
+
+\subsection{Trucades a la api}
+Per aconseguir els valors per mostrar a la p\`agina,
+primer es fa una trucada a l'api des de HomeController.cs
+(aquesta dep\`en de la p\`agina que est\`a carregant i l'argument que ha rebut).
+
+Els resultats de la trucada van a la variable model,
+que \'es una inst\`ancia d'una classe amb els par\`ametres que es volen mostrar
+i s'utilitza com a argument al carregar la vista.
+En el nostre cas, les classes s\'on llistes amb informaci\'o sobre
+les begudes que es volen mostrar.
+
+
+\subsection{Vistes}
+Les vistes s\'on l'html rebut per part del controlador,
+que \'es el que es mostra a la pantalla del client.
+Aquests es fan a partir dels fitxers cshtml,
+que ajunten html amb funcions de C\# i ASP.
+
+Algunes d'aquestes funcions utilitzades s\'on el foreach,
+que repeteix un codi html per cada beguda que es vulgui mostrar,
+o l'if, per comprovar condicions.
+Tamb\'e s'utilitza la crida de variables per canviar par\`ametres com el t\'itol i descripci\'o.
+
+Els fitxers de la carpeta home utilitzen comparteixen el codi del layout,
+que s'afegeix autom\`aticament a totes les vistes.
+Aquest cont\'e configuracions del head, el t\'itol, el navbar i la barra de busca.
+\'Es un fitxer compartit per no haver de repetir aquella porci\'o de codi a cada cshtml.
+
+
+\subsection{Links}
+Per anar de p\`agina en p\`agina,
+s'utilitzen links amb par\`ametres especials (de cshtml)
+que truquen a altres funcions de HomeController.
+Per cada funci\'o, es carrega la vista amb aquest mateix nom.
+En cas de que requereixin m\'es informaci\'o,
+com ara els valors que es volen buscar (com a argument),
+s'utilitza asp-target per canviar-los.
+
+D'una manera similar funciona el formulari,
+al qual se l'ha d'especificar a quina funci\'o est\`a trucant,
+i aquest retornar\'a els valors del formulari en forma d'argument.
+Els formularis s\'on utilitzats per fer funcionar la barra de busca.
