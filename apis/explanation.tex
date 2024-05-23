@@ -1,8 +1,12 @@
 \section{Explicaci\'o del codi}
 
 \subsection{HomeController}
-El fitxer HomeController.cs \'es l'encarregat de manegar la p\`agina.
-Dep\`en de la funci\'o executada, carrega una vista o una altra.
+El fitxer HomeController.cs \'es l'encarregat de manegar la web.
+T\'e una funci\'o per cada p\`agina`,
+que executa la vista d'aquesta (el cshtml)
+i mostra l'html al client.
+Dep\`en de la funci\'o executada, carrega una vista o una altra,
+que t\'e el mateix nom que la funci\'o.
 
 
 \subsection{Trucades a la api}
@@ -25,8 +29,10 @@ que ajunten html amb funcions de C\# i ASP.
 
 Algunes d'aquestes funcions utilitzades s\'on el foreach,
 que repeteix un codi html per cada beguda que es vulgui mostrar,
-o l'if, per comprovar condicions.
-Tamb\'e s'utilitza la crida de variables per canviar par\`ametres com el t\'itol i descripci\'o.
+o un if, per comprovar condicions.
+Tamb\'e s'utilitzen variables per mostrar par\`ametres a l'html,
+com ara la informaci\'o de les begudes mostrades
+(incluint t\'itol, descripci\'o, imatge...).
 
 Els fitxers de la carpeta home utilitzen comparteixen el codi del layout,
 que s'afegeix autom\`aticament a totes les vistes.
