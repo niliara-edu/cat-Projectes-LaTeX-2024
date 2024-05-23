@@ -3,20 +3,56 @@
 \subsubsection{Models}
 A la carpeta Models hi ha les classes a on es guarden
 els atributs que es reben des de l'api.
+Cada un dels atributs rebuts en json
+passa a una variable de la classe.
 
+\begin{verbatim}
+Models
+- Cocktail.cs
+\end{verbatim}
 
 \subsubsection{Controllers}
-\'Es on es guarda l'arxiu cs que manega les trucades a la web i fa les trucades a la api.
-Per fer una trucada a l'api,
-guarda l'informaci\'o rebuda a una classe (definida a Models)
-i a continuaci\'o obre la vista corresponent (definida a Views).
+Cont\'e l'arxiu principal de a web (HomeController.cs),
+que t\'e les funcions per cada una de les vistes.
+Aquest arxiu tamb\'e manega les trucades de les apis,
+guarda la informaci\'o rebuda a una inst\`ancia de la classe corresponent
+i passa aquesta classe com a model a la vista.
+
+\begin{verbatim}
+Controllers/
+- HomeController.cs
+\end{verbatim}
+
 
 \subsubsection{Views}
 \'Es la carpeta a on es guarden les p\`agines en format cshtml.
 Es divideix en dues subcarpetes: home, a on es guarden les p\`agines,
 i shared, a on es guarda el layout compartit (que es repeteix a totes les p\`agines).
+Els arxius \_ViewStart.cs i \_ViewImport.cs serveixen, respectivament,
+per executar els cshtml corresponents (incluint el layout i la p\`agina)
+i importar els moduls necessaris.
+
+\begin{verbatim}
+Views/
+- Home
+    - Cocktails.cshtml
+    - CocktailsByIngredient.cshtml
+    - Index.cshtml
+    - One.cshtml
+- Shared
+    - _Layout.cshtml
+- _ViewImports.cshtml
+- _ViewStart.cshtml
+\end{verbatim}
+
 
 \subsubsection{wwwroot}
 \'Es a on es guarden els assets de la web,
-incluint el css, la font i la imatge del fons.
+incluint el css, el ttf i la imatge del fons.
 
+\begin{verbatim}
+wwwroot/
+- Darker_Glitch_City.png
+- VT323-Regular.ttf
+- site.css
+\end{verbatim}
